@@ -5,7 +5,8 @@ class UserController:
     @staticmethod
     def home(): 
         return render_template('home.html')
-    
+
+    @staticmethod
     def sobrenos():
-        adms = Adms.query.all()  
+        adms = Adms.query.all()
         return render_template('sobrenos.html', adms=adms)

@@ -35,9 +35,9 @@ with app.app_context():
     if not Integrante.query.first():
         print("Tabela 'integrante' criada e está vazia.")   
         integrantes_para_adicionar = [
-            Integrante(Nome="Karin Abe", Bio="Voluntária de Moderação e Criação de Conteúdo", foto_url="image/karin.jpg", cargo="Moderadora"),
-            Integrante(Nome="Niedja Araújo", Bio="Voluntária de Moderação e Criação de Conteúdo", foto_url="image/niedja.jpg", cargo="Moderadora"),
-            Integrante(Nome="Mariana Aragão", Bio="Voluntária de Moderação e Criação de Conteúdo", foto_url="image/mari.jpg", cargo="Moderadora"),
+            Integrante(name="Karin Abe", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/karin.jpg", cargo="Moderadora"),
+            Integrante(name="Niedja Araújo", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/niedja.jpg", cargo="Moderadora"),
+            Integrante(name="Mariana Aragão", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/mari.jpg", cargo="Moderadora"),
         ]
 
         db.session.add_all(integrantes_para_adicionar)
@@ -45,12 +45,12 @@ with app.app_context():
         print("Integrantes adicionados com sucesso!")
             
 
-    # Função para Atualizar nome da Leticya se já existir com nome antigo
-"""     leticya = Adms.query.filter_by(name="Leticya Locha").first()
-    if leticya:
-        leticya.name = "Letycia Locha"
+    # Função para Atualizar se já existir no if colocar o novo dado
+    ana = Adms.query.filter_by(imagem="image/raquel.jpg").first()
+    if ana:
+        ana.imagem = "image/raquel-admin.png"
         db.session.commit()
-        print("Nome atualizado com sucesso.") """
+        print("imagem atualizada com sucesso.")
     
 #rota para redirecionamento
 

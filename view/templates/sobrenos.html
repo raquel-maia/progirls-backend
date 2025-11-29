@@ -1,18 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progirls</title>
-</head>
-<body>
-    <h1>Sobre Adms (teste)</h1>
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sobre.css') }}">
+{% endblock %}
 
-    {% for adm in adms %}
-        <div style="margin-bottom:20px;">
-            <h3>{{ adm.name }} - {{ adm.cargo }}</h3>
-            <img src="{{ url_for('static', filename=adm.imagem) }}" alt="{{ adm.name }}" width="150" />
+{% block title %}Sobre Nós - ProGirls{% endblock %}
+
+{% block content %}
+
+<section class="sobre-container">
+
+    <h1 class="titulo-sobre">
+        Sobre <span class="destaque-verde">Nós</span>
+    </h1>
+
+    <div class="sobre-conteudo">
+
+        <div class="texto-sobre">
+            <p>
+                A Programmer Girl (<strong>ProGirls</strong>) começou em 2023 como uma iniciativa de
+                Raquel Maia para compartilhar conhecimentos em programação.
+            </p>
+
+            <p>
+                Hoje, é uma comunidade com <strong>mais de 500 mulheres</strong> no WhatsApp,
+                LinkedIn e Instagram, apoiada pelas administradoras Letycia, Sabrinne,
+                Karol, Ana e Daniele.
+            </p>
+
+            <p>
+                O grupo promove inclusão, suporte emocional, aprendizado técnico,
+                idiomas, troca de experiências e oportunidades de trabalho, criando um
+                ambiente seguro e acolhedor para mulheres de todas as origens crescerem
+                juntas na área de tecnologia.
+            </p>
         </div>
-    {% endfor %}
-</body>
-</html>
+
+        <div class="imagem-sobre">
+            <img src="{{ url_for('static', filename='image/logo-sobre.jpg') }}"
+                 alt="Mulher na tecnologia">
+        </div>
+
+    </div>
+</section>
+
+<section class="adms-container">
+
+    <h2 class="titulo-adms">
+        Líderes que <span class="destaque-verde">Impulsionam</span> nossa Comunidade
+    </h2>
+
+    <div class="lista-adms">
+
+        {% for adm in adms %}
+        <div class="card-adm">
+            <div class="foto-adm">
+                <img src="{{ url_for('static', filename=adm.imagem) }}"
+                     alt="{{ adm.name }}">
+            </div>
+
+            <h3 class="nome-adm">{{ adm.name }}</h3>
+            <p class="cargo-adm">{{ adm.cargo }}</p>
+        </div>
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

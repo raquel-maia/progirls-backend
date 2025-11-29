@@ -1,12 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Progirls</title>
-</head>
-<body>
-    <h1>teste progirls</h1>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block title %}ProGirls — Comunidade de Mulheres na Tecnologia{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+
+    <div class="hero-content">
+        <h1>
+            Empoderando <span class="rosa">Mulheres</span> no<br>
+            Mundo da <span class="verde">Tecnologia</span>
+        </h1>
+
+        <p class="sub">
+            Construindo uma comunidade onde mulheres na tecnologia se conectam,<br>
+            aprendem e crescem juntas para remodelar o futuro do setor.
+        </p>
+
+        <div class="buttons">
+            <a href="/inscricao" class="btn roxo">Vem com a gente!</a>
+            <a href="/sobre" class="btn outline">Saiba Mais</a>
+        </div>
+
+       
+    </div>
+</section>
+
+<!-- Section 2 -->
+<section class="banner">
+    <p>Descubra o futuro da tecnologia com a gente</p>
+</section>
+
+{% endblock %}

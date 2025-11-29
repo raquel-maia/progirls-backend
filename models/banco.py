@@ -8,8 +8,8 @@ class Integrante(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     bio = db.Column(db.String(1500), nullable=False)
-    cargo = db.Column(db.String(800), nullable=False)
     imagem = db.Column(db.String(200))
+    cargo = db.Column(db.String(100), nullable=False)
 
 
 class Adms(db.Model):
