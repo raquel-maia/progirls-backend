@@ -9,40 +9,67 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sobre.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/contato.css') }}">
-
 </head>
 
 <body>
-    <!-- Cabeçalho opcional -->
-    {% block header %}
-    <header class="navbar">
-        <!-- Conteúdo do menu, logo etc -->
-            <div class="logo">
-            <img src="{{ url_for('static', filename='image/logo (2).png') }}" alt="Logo ProGirls">
-            <span>ProGirls</span>
-        </div>
 
-        <nav class="menu">
-            <a href="/comunidade">Comunidade</a>
-            <a href="/sobre">Sobre</a>
-            <a href="/voluntariado">Voluntariado</a>
-            <a href="/contato">Contato</a>
-        </nav>
+{% block header %}
+<header class="navbar">
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdK0bRiUC2acGzA5vfnBzX-BmUUHLNuQciJmagKINC7meK5Gg/viewform?usp=header" class="cta">Vem com a gente!</a>
-    </header>
-    {% endblock %}
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="{{ url_for('static', filename='image/logo (2).png') }}" alt="Logo ProGirls">
+        <span>ProGirls</span>
+    </div>
 
-    <!-- Conteúdo principal -->
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <!-- MENU DESKTOP -->
+    <nav class="menu-desktop">
+        <a href="/comunidade">Comunidade</a>
+        <a href="/sobre">Sobre</a>
+        <a href="/voluntariado">Voluntariado</a>
+        <a href="/contato">Contato</a>
+    </nav>
 
-    <!-- Rodapé opcional -->
-    {% block footer %}
-    <footer>
-        <!-- rodapé da ProGirls -->
-    </footer>
-    {% endblock %}
+    <!-- DIREITA (mobile + CTA) -->
+    <div class="nav-right">
+        <button class="menu-btn mobile-only" id="btn-menu">☰</button>
+
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdK0bRiUC2acGzA5vfnBzX-BmUUHLNuQciJmagKINC7meK5Gg/viewform?usp=header"
+           class="cta">
+            Vem com a gente!
+        </a>
+    </div>
+</header>
+
+<!-- MENU MOBILE OCULTO -->
+<nav class="menu-mobile" id="mobile-menu">
+    <a href="/">Início</a>
+    <a href="/comunidade">Comunidade</a>
+    <a href="/sobre">Sobre</a>
+    <a href="/voluntariado">Voluntariado</a>
+    <a href="/contato">Contato</a>
+</nav>
+{% endblock %}
+
+<!-- CONTEÚDO -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+{% block footer %}
+<footer>
+</footer>
+{% endblock %}
+
+<!-- JS DO MENU MOBILE -->
+<script>
+    const btnMenu = document.getElementById("btn-menu");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    btnMenu.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+    });
+</script>
+
 </body>
 </html>

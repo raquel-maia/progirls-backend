@@ -1,4 +1,6 @@
-/* Removidas diretivas do Tailwind */
+/* ============================================
+   VARIÁVEIS E GLOBAL
+=============================================== */
 
 :root {
     --background: #ffffff;
@@ -12,24 +14,34 @@
     }
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* ⚠ evita elementos maiores que a tela */
+}
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden !important; /* ⚠ impede arrastar pro lado */
+}
+
 body {
     color: var(--foreground);
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    padding-top: 80px; /* ajuste aqui */
+    padding-top: 80px;
 }
 
-/* =============================== */
-/* NAVBAR PROGIRLS                 */
-/* =============================== */
+/* ============================================
+   NAVBAR DESKTOP
+=============================================== */
 
 .navbar {
     width: 100%;
     background: #000;
     padding: 12px 40px;
-    height: 80px; /* altura fixa */
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,10 +49,9 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 999;
+    z-index: 9999;  /* 🔥 deixa o hambúrguer SEMPRE clicável */
     box-sizing: border-box;
 }
-
 
 /* LOGO */
 .logo {
@@ -61,26 +72,46 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-
-/* MENU */
-.menu {
+/* MENU DESKTOP */
+.menu-desktop {
     display: flex;
     gap: 28px;
 }
 
-.menu a {
+.menu-desktop a {
     color: #fff;
     text-decoration: none;
     font-size: 16px;
-    transition: 0.2s ease-in-out;
+    transition: 0.2s;
 }
 
-.menu a:hover {
+.menu-desktop a:hover {
     color: #ab47ff;
 }
 
+/* NAV RIGHT */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
 
-/* BOTÃO CTA */
+/* HAMBÚRGUER */
+.menu-btn {
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 10000; /* 🔥 garante clique */
+    position: relative;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* CTA */
 .cta {
     background: linear-gradient(90deg, #9d4edd, #e100ff);
     padding: 10px 20px;
@@ -96,30 +127,91 @@ body {
     filter: brightness(1.2);
 }
 
-main, section, .container, .conteudo {
-    margin-top: 120px; /* garante o espaçamento real */
+/* ============================================
+   MENU MOBILE LATERAL
+=============================================== */
+
+.menu-mobile {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    width: 240px;
+    height: calc(100vh - 80px);
+    background: #000;
+    border-left: 2px solid #a000ff;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    transform: translateX(100%);
+    transition: 0.3s ease;
+    z-index: 9998;
+    overflow-y: auto;
 }
 
+.menu-mobile a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
 
+.menu-mobile a:hover {
+    color: #ab47ff;
+}
 
-/* RESPONSIVIDADE */
+.menu-mobile.active {
+    transform: translateX(0);
+}
+
+/* ============================================
+   MOBILE
+=============================================== */
+
 @media (max-width: 850px) {
+
     .navbar {
-        flex-direction: column;
-        gap: 15px;
-        padding: 15px;
+        padding: 10px 16px;
+        height: 70px;
     }
 
-    .menu {
-        gap: 18px;
+    .logo img {
+        width: 42px;
     }
 
     .logo span {
         font-size: 22px;
     }
 
+    .menu-desktop {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .menu-btn {
+        font-size: 26px;
+    }
+
     .cta {
-        margin-top: 5px;
+        padding: 6px 14px;
+        font-size: 13px;
+    }
+
+    .menu-mobile {
+        top: 70px;
+        height: calc(100vh - 70px);
     }
 }
 
+/* ============================================
+   ESPAÇO DO CONTEÚDO
+=============================================== */
+
+main, section, .container, .conteudo {
+    margin-top: 120px;
+    max-width: 100%; /* 🔥 evita overflow */
+    overflow-x: hidden;
+}
