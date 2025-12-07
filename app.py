@@ -30,11 +30,11 @@ with app.app_context():
             
             Adms(name="Karol Falcão", cargo="Líder Educacional", imagem="image/karol.jpg"),
 
-            Adms(name="Ana Beatriz", cargo="Líder de Mídia Social", imagem="image/ana-admin.png"),
+            Adms(name="Ana Beatriz", cargo="Líder de Organização", imagem="image/ana-admin.png"),
 
-            Adms(name="Danielle Costa", cargo="Líder de Mídia Social", imagem="image/dani.jpg"),
+            Adms(name="Danielle Costa", cargo="Líder de Organização", imagem="image/dani.jpg"),
 
-            Adms(name="Sabrinne Sousa", cargo="Líder de Mídia Social", imagem="image/sabrinne-admin.jpg"),
+            Adms(name="Sabrinne Sousa", cargo="Líder de Organização", imagem="image/sabrinne-admin.jpg"),
         ]
 
         db.session.add_all(novos_adms)
