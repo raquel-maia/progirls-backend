@@ -49,22 +49,75 @@
         Líderes que <span class="destaque-verde">Impulsionam</span> nossa Comunidade
     </h2>
 
-    <div class="lista-adms">
+    <div class="carousel-wrapper">
 
-        {% for adm in adms %}
-        <div class="card-adm">
-            <div class="foto-adm">
-                <img src="{{ url_for('static', filename=adm.imagem) }}"
-                     alt="{{ adm.name }}">
+        <button class="arrow left" onclick="rolarCarrossel(-1)">❮</button>
+
+        <div class="carousel" id="carrosselLideres">
+
+            {% for adm in adms %}
+            <div class="card-adm">
+                <div class="foto-adm">
+                    <img src="{{ url_for('static', filename=adm.imagem) }}" alt="{{ adm.name }}">
+                </div>
+
+                <h3 class="nome-adm">{{ adm.name }}</h3>
+                <p class="cargo-adm">{{ adm.cargo }}</p>
             </div>
+            {% endfor %}
 
-            <h3 class="nome-adm">{{ adm.name }}</h3>
-            <p class="cargo-adm">{{ adm.cargo }}</p>
         </div>
-        {% endfor %}
+
+        <button class="arrow right" onclick="rolarCarrossel(1)">❯</button>
 
     </div>
 
 </section>
+
+<section class="pilares-container">
+
+    <h2 class="titulo-pilares">
+        Nossos <span class="destaque-rosa">Pilares</span>
+    </h2>
+
+    <div class="pilar-card">
+        <h3 class="pilar-titulo missao">Missão</h3>
+        <p class="pilar-texto">
+            Fortalecer o protagonismo feminino na tecnologia, promovendo
+            desenvolvimento profissional e autonomia econômica para mulheres.
+        </p>
+    </div>
+
+    <div class="pilar-card">
+        <h3 class="pilar-titulo visao">Visão</h3>
+        <p class="pilar-texto">
+            Queremos ser uma força que impulsiona a formação técnica e a empregabilidade
+            de mulheres na TI, acompanhando desde o despertar para a área até a conquista
+            de posições de liderança.
+        </p>
+    </div>
+
+    <div class="pilar-card">
+        <h3 class="pilar-titulo valores">Valores</h3>
+        <p class="pilar-texto">
+            Valorizamos o empoderamento, a inclusão, a colaboração,
+            a excelência e o impacto. Acreditamos que, juntas, somos capazes
+            de transformar o mercado de trabalho e abrir caminhos para mais mulheres.
+        </p>
+    </div>
+
+</section>
+
+
+<script>
+function rolarCarrossel(direcao) {
+    const carrossel = document.getElementById("carrosselLideres");
+
+    // largura do card + margem
+    const larguraCard = carrossel.querySelector(".card-adm").offsetWidth + 30;
+
+    carrossel.scrollLeft += direcao * larguraCard;
+}
+</script>
 
 {% endblock %}

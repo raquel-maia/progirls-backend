@@ -3,9 +3,10 @@
 /* ------------------------------- */
 
 :root {
-    --roxo: #a020f0;
-    --verde: #c6ff00;
+    --roxo: #9929EA;
+    --verde: #CDF527;
     --branco: #ffffff;
+    --rosa:#B14677;
     --cinza-texto: #d4d4d4;
     --preto-fundo: #0b0b0c;
 }
@@ -69,8 +70,9 @@ body {
 }
 
 
+
 /* ------------------------------- */
-/*  SEÇÃO LIDERANÇAS               */
+/*  SEÇÃO LIDERANÇAS (CARROSSEL)   */
 /* ------------------------------- */
 
 .adms-container {
@@ -85,19 +87,43 @@ body {
     margin-bottom: 50px;
 }
 
-.lista-adms {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 40px;
-    justify-items: center;
+/* --- CARROSSEL AJUSTADO --- */
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    justify-content: center;
+    gap: 10px;
 }
 
+.carousel {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px 10px;
+    width: 100%;
+}
+
+.carousel::-webkit-scrollbar {
+    height: 8px;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--roxo);
+    border-radius: 10px;
+}
+
+/* --- CARDS DO CARROSSEL --- */
+
 .card-adm {
+    min-width: 260px;
     background: linear-gradient(180deg, #200028, #120014);
     padding: 30px 20px;
     border-radius: 22px;
-    width: 100%;
-    max-width: 260px;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.25s ease;
@@ -126,9 +152,94 @@ body {
     font-size: 0.95rem;
 }
 
+/* --- SETAS DO CARROSSEL --- */
 
-/* RESPONSIVIDADE */
+.arrow {
+    background: transparent;
+    border: none;
+    color: var(--branco);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.arrow:hover {
+    color: var(--verde);
+}
+
+/* --- SEÇÃO PILARES --- */
+
+.pilares-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 80px auto;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.titulo-pilares {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.destaque-rosa {
+    color:  #B14677;
+}
+
+/* Cards dos pilares */
+.pilar-card {
+    background-color: #0c0c0c;
+    border: 1px solid #333;
+    padding: 25px;
+    border-radius: 8px;
+    margin: 25px auto;
+    max-width: 650px;
+    transition: transform .2s ease;
+}
+
+.pilar-card:hover {
+    transform: translateY(-3px);
+}
+
+/* Títulos */
+.pilar-titulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Cores individuais */
+.missao {
+    color: #a855f7; /* roxo */
+}
+
+.visao {
+    color: #d1ff4c; /* verde neon */
+}
+
+.valores {
+    color: #B14677; /* rosa */
+}
+
+/* Texto */
+.pilar-texto {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+
+
+/* ------------------------------- */
+/*  RESPONSIVIDADE                 */
+/* ------------------------------- */
+
 @media (max-width: 768px) {
+
     .titulo-sobre {
         font-size: 2rem;
         text-align: center;
@@ -140,5 +251,9 @@ body {
 
     .titulo-adms {
         font-size: 1.8rem;
+    }
+
+    .card-adm {
+        min-width: 200px;
     }
 }
