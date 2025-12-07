@@ -10,3 +10,7 @@ class UserController:
     def sobrenos():
         adms = Adms.query.all()
         return render_template('sobrenos.html', adms=adms)
+    
+    @staticmethod
+    def contato():
+        return render_template('contato.html')

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/contato.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container-contato">
+
+    <h1 class="titulo-contato">Entre em <span>Contato</span></h1>
+
+    <p class="sub-titulo-contato">
+        Quer saber mais sobre nossos projetos, colaborar com a comunidade ou fechar uma parceria? <br>
+        Preencha o formulário abaixo — retornaremos o mais rápido possível! 💜
+    </p>
+
+    <iframe 
+        class="form-google"
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdPFOqvbTw5UEustI5fV27QiftAZ6huFKAtMEm-8wcm3UrUQg/viewform?usp=publish-editor">
+    </iframe>
+
+</div>
+
+{% endblock %}

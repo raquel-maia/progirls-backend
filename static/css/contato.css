@@ -1,0 +1,104 @@
+:root {
+    --roxo: #9929EA;
+    --branco: #ffffff;
+    --preto-fundo: #000000;
+}
+
+body {
+    background: var(--preto-fundo);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+/* ============================
+CONTAINER GERAL
+=============================== */
+.container-contato {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* <<< agora tudo fica alinhado à esquerda */
+    gap: 1.5rem;
+}
+
+/* ============================
+   TÍTULO
+=============================== */
+.titulo-contato {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--branco);
+    text-align: left; /* garantir */
+    width: 100%;
+    margin: 0;
+}
+
+.titulo-contato span {
+    color: var(--roxo);
+}
+
+/* ============================
+   SUBTÍTULO
+=============================== */
+.sub-titulo-contato {
+    text-align: left;
+    font-size: 18px;
+    max-width: 760px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+/* ============================
+   IFRAME (GOOGLE FORM)
+=============================== */
+.form-google {
+    width: 100%;
+    max-width: 760px;
+    height: 1100px;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--branco);
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.15);
+}
+
+/* ============================
+   RESPONSIVIDADE
+=============================== */
+@media (max-width: 768px) {
+
+    .container-contato {
+        padding: 1.5rem;
+    }
+
+    .titulo-contato {
+        font-size: 34px;
+    }
+
+    .sub-titulo-contato {
+        font-size: 16px;
+        max-width: 100%;
+    }
+
+    .form-google {
+        height: 1300px; /* Google Form fica mais alto no mobile */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .titulo-contato {
+        font-size: 28px;
+    }
+
+    .sub-titulo-contato {
+        font-size: 15px;
+    }
+
+    .form-google {
+        height: 1450px; /* muito importante para celulares pequenos */
+        border-radius: 10px;
+    }
+}

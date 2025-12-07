@@ -15,9 +15,9 @@ with app.app_context():
     db.create_all()
 
     # ------------------------------
-    # Função para apagar e recriar os ADMs
+    # Função para apagar e recriar os ADMs (sempre deixar comentado para não ficar recriando)
     # ------------------------------
-    def recriar_adms():
+    """ def recriar_adms():
         # Apagar todos os registros
         Adms.query.delete()
         db.session.commit()
@@ -42,7 +42,7 @@ with app.app_context():
         print("ADMs recriados com sucesso!")
 
     # Chamada para recriar ADMs SEMPRE que rodar
-    recriar_adms()
+    recriar_adms() """
 
     # Criar integrantes caso ainda não existam
     if not Integrante.query.first():
@@ -60,6 +60,7 @@ with app.app_context():
 # Rotas
 app.add_url_rule('/', 'home', UserController.home)
 app.add_url_rule('/sobre', 'sobrenos', UserController.sobrenos)
+app.add_url_rule('/contato', 'contato', UserController.contato)
 
 if __name__ == '__main__':
     app.run(debug=True)
