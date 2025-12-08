@@ -43,24 +43,26 @@ with app.app_context():
 
     # Chamada para recriar ADMs SEMPRE que rodar
     recriar_adms() """
-
-    # Criar integrantes caso ainda não existam
-    if not Integrante.query.first():
-        integrantes_para_adicionar = [
-            Integrante(name="Karin Abe", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/karin.jpg", cargo="Moderadora"),
-            Integrante(name="Niedja Araújo", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/niedja.jpg", cargo="Moderadora"),
-            Integrante(name="Mariana Aragão", bio="Voluntária de Moderação e Criação de Conteúdo", imagem="image/mari.jpg", cargo="Moderadora"),
+    def recriar_integrantes():
+        # Apagar todos os registros
+        Integrante.query.delete()
+        db.session.commit()
+        integrantes_new = [
+            Integrante(name="Karin Abe", bio="Voluntária de Criação de Conteúdo", imagem="image/karin.jpg", cargo="Social Media"),
+            Integrante(name="Niedja Araújo", bio="Voluntária de Moderação", imagem="image/niedja.jpg", cargo="Moderadora"),
         ]
 
-        db.session.add_all(integrantes_para_adicionar)
+        db.session.add_all(integrantes_new)
         db.session.commit()
-        print("Integrantes adicionados com sucesso!")
+        print("Integrantes atualizadas com sucesso!")
+    recriar_integrantes()
 
 
 # Rotas
 app.add_url_rule('/', 'home', UserController.home)
 app.add_url_rule('/sobre', 'sobrenos', UserController.sobrenos)
 app.add_url_rule('/contato', 'contato', UserController.contato)
+app.add_url_rule('/comunidade', 'comunidade', UserController.comunidade)
 
 if __name__ == '__main__':
     app.run(debug=True)

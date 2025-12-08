@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/comunidade.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="comunidade-section">
+
+    <div class="comunidade-header">
+        <h2 class="titulo-roxo">Comunidade</h2>
+
+        <h1>
+            Encontre as Profissionais que <span class="destaque">Transformam</span> a Tecnologia
+        </h1>
+
+        <p class="descricao">
+            Somos uma comunidade de mais de 500 mulheres na tecnologia. De áreas como programação, ciência de dados, UX/UI,
+            cloud e cibersegurança. Conheça por área de atuação.
+        </p>
+    </div>
+
+    <!-- FILTRO -->
+    <nav class="comunidade-filtros">
+
+        <a href="{{ url_for('comunidade') }}" 
+           class="filtro-item {% if not request.args.get('cargo') %}ativo{% endif %}">
+            Todas as Integrantes
+        </a>
+
+        <div class="dropdown">
+            <button class="filtro-item dropdown-btn">
+                Área de Atuação ▾
+            </button>
+
+            <div class="dropdown-menu">
+                {% for cargo in cargos %}
+                    <a href="{{ url_for('comunidade', cargo=cargo) }}">
+                        {{ cargo }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- GRID DE INTEGRANTES -->
+    <div class="grid-integrantes-wrapper">
+        <div class="grid-integrantes">
+
+            {% for integrantes in integrante %}
+                <div class="card-integrante">
+
+                    <div class="card-conteudo top">
+                        <h3>{{ integrantes.name }}</h3>
+                        <span class="cargo"> | {{ integrantes.cargo }}</span>
+                    </div>
+
+                    <div class="card-img">
+                        <img src="{{ url_for('static', filename=integrantes.imagem or 'image/default.jpg') }}"
+                             alt="Foto de {{ integrantes.name }}">
+                    </div>
+
+                    <div class="card-conteudo bottom">
+                        <p>{{ integrantes.bio }}</p>
+
+                        <div class="card-social-placeholder">
+                            <span class="placeholder-icon circle-icon"></span>
+                            <span class="placeholder-icon circle-icon"></span>
+                            <span class="placeholder-icon circle-icon"></span>
+                        </div>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</section>
+
+<section class="conteudos-section">
+
+    <h2 class="explore-titulo">
+        Explore nossos <span class="destaque-verde">Conteúdos</span>
+    </h2>
+
+    <div class="conteudos-wrapper">
+
+        <div class="conteudos-circles">
+            <div class="circle podcast">
+                <img src="{{ url_for('static', filename='image/Vector.png') }}" alt="">
+                <span>PodCast</span>
+            </div>
+
+            <div class="circle youtube">
+                <img src="{{ url_for('static', filename='image/Vector (2).png') }}" alt="">
+                <span>YouTube</span>
+            </div>
+
+            <div class="circle eventos">
+                <img src="{{ url_for('static', filename='image/Vector (1).png') }}" alt="">
+                <span>Eventos</span>
+            </div>
+
+            <div class="circle projetos">
+                <img src="{{ url_for('static', filename='image/Vector (3).png') }}" alt="">
+                <span>Projetos</span>
+            </div>
+        </div>
+
+        <div class="conteudos-texto-wrapper">
+
+            <p class="conteudos-texto">
+                Produzimos conteúdos que fortalecem a presença feminina na tecnologia, trazendo conhecimento acessível e
+                prático para mulheres em diferentes níveis da carreira — desde iniciantes até profissionais experientes.
+            </p>
+
+            <p class="conteudos-texto">
+                No YouTube, você encontra aulas completas, projetos guiados, entrevistas com especialistas, tutoriais
+                passo a passo e painéis sobre temas como programação, dados, UX/UI, cloud, carreira e mercado de trabalho.
+                Nosso objetivo é democratizar o aprendizado técnico e ampliar oportunidades na área.
+            </p>
+
+            <p class="conteudos-texto">
+                Também promovemos eventos, workshops, lives e mentorias coletivas que conectam mulheres da comunidade
+                e criam um ambiente seguro de troca, colaboração e desenvolvimento profissional. Além disso,
+                nossas integrantes desenvolvem projetos em equipe para fortalecer suas habilidades e criar um
+                portfólio sólido.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
